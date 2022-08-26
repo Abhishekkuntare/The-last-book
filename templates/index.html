@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Recommender System</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <style>
+    body {
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+    .text_color {
+      color: antiquewhite;
+    }
+  </style>
+  <body style="background-color: black">
+    <!-- nav -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #c4fcef">
+      <a class="navbar-brand">My Books</a>
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/recommend">Recommend</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 style="margin-top: 30px" class="text_color">Top 50 Books</h1>
+        </div>
+
+        <!-- cards  -->
+        <!-- using ginga template  -->
+        {% for i in range(book_name|length) %}
+        <div
+          class="col-md-3"
+          style="
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <div class="card" style="background-color: black">
+            <div class="card-body" style="background-color: black">
+              <img
+                style="width: 200px"
+                class="card-img-top"
+                src="{{image[i]}}"
+                alt="book"
+              />
+            </div>
+            <div
+              style="
+                margin-left: 15px;
+                display: flex;
+                align-items: start;
+                justify-content: center;
+                flex-direction: column;
+              "
+            >
+              <h6 class="text-white">Name:- {{book_name[i]}}</h6>
+              <p class="text-white">Author:- {{author[i]}}</p>
+              <p class="text-white">Votes:- {{votes[i]}}</p>
+              <p class="text-white">Ratings:- {{rating[i]}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
